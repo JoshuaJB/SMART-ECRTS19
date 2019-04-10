@@ -115,8 +115,8 @@ for core in ["4","8","16","32"]:
 print("Done.")
 
 # Plot Uniform-Normal Data
-wdir = "uniform-normal/results2/"
-sdir = "uniform-normal/results2/graphs/"
+wdir = "uniform-normal/results/"
+sdir = "uniform-normal/results/graphs/"
 print("Scanning all uniform-normal "+str(sample_size_to_scan)+"-sample results and saving to '" + sdir + "'...")
 r = ["65","75","85"]
 for core in ["4","8","16","32"]:

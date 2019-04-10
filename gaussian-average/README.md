@@ -5,7 +5,10 @@
 All the `./results` data used in the paper can be modeled by simply running
 `./run_4-32_mixed_stdev.sh 1000`. The other, lower resolution test data can
 be reproduced by running the same script with a lower sample count (i.e.
-100 or 500 rather than 1000).
+100 or 500 rather than 1000). **Warning:** on a moderately recent 24-core
+Intel Xeon-based server, these experimets take over a week to run. Editing
+the execution script to exclude 32 or 16-core CPUs will substantially reduce
+the runtime if you are uninterested in those platforms.
 
 ## Results Guide
 
@@ -15,7 +18,7 @@ be reproduced by running the same script with a lower sample count (i.e.
   [0.6, 1) with periods inside the window [10, 100].
 - `./1st-run-archive` contains our first run of this benchmark suite with the
   updated modeling. Contains a large amount of repeated data due to bad
-  permutation management. **DEPRECATE:D** Not used in the paper and simply
+  permutation management. **DEPRECATED:** Not used in the paper and simply
   stored here for archival purposes.
 
 ## Titling Disambiguation
