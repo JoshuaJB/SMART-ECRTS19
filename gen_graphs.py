@@ -1,7 +1,14 @@
 #!/usr/bin/python3
 
+# Switch to a backend that doesn't need X
 import matplotlib
 matplotlib.use("Agg")
+
+# Switch to a font with Unicode characters
+from matplotlib import rcParams
+rcParams['font.sans-serif'] = ['DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', 'sans-serif']
+rcParams['font.serif'] = ['DejaVu Serif', 'Bitstream Vera Serif', 'Computer Modern Roman', 'New Century Schoolbook', 'Century Schoolbook L', 'Utopia', 'ITC Bookman', 'Bookman', 'Nimbus Roman No9 L', 'Times New Roman', 'Times', 'Palatino', 'Charter', 'serif']
+
 import matplotlib.pyplot as plt
 import numpy
 
@@ -95,24 +102,27 @@ def plot_util_quad_from_file(path, m_range_multiplier=2, save=False):
     plt.close(fig)
 
 plt.rcParams['figure.figsize'] = [12, 9]
+sample_size_to_scan = 1000
+
 # Plot Gaussion-Average Data
 wdir = "gaussian-average/results/"
 sdir = "gaussian-average/results/graphs/"
-print("Scanning all gaussian-average results and saving to '" + sdir + "'...")
+print("Scanning all gaussian-average "+str(sample_size_to_scan)+"-sample results and saving to '" + sdir + "'...")
 for core in ["4","8","16","32"]:
     for f in range(1,4):
         for s in range(1,4):
-            plot_util_quad_from_file(wdir+core+"_1000_"+str(f)+"_"+str(s)+"_normal.txt", save=True)
+            plot_util_quad_from_file(wdir+core+"_"+str(sample_size_to_scan)+"_"+str(f)+"_"+str(s)+"_normal.txt", save=True)
 print("Done.")
+
 # Plot Uniform-Normal Data
 wdir = "uniform-normal/results2/"
 sdir = "uniform-normal/results2/graphs/"
-print("Scanning all uniform-normal results and saving to '" + sdir + "'...")
+print("Scanning all uniform-normal "+str(sample_size_to_scan)+"-sample results and saving to '" + sdir + "'...")
 r = ["65","75","85"]
 for core in ["4","8","16","32"]:
     for f in r:
         for s in r:
             for e in ["01","055","1"]:
-                plot_util_quad_from_file(wdir+core+"_1000_"+str(e)+"_"+str(f)+"_1_"+str(s)+"_1_normal.txt", save=True)
+                plot_util_quad_from_file(wdir+core+"_"+str(sample_size_to_scan)+"_"+str(e)+"_"+str(f)+"_1_"+str(s)+"_1_normal.txt", save=True)
 print("Done.")
 
