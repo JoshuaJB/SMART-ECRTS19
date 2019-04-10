@@ -9,6 +9,8 @@ from matplotlib import rcParams
 rcParams['font.sans-serif'] = ['DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', 'sans-serif']
 rcParams['font.serif'] = ['DejaVu Serif', 'Bitstream Vera Serif', 'Computer Modern Roman', 'New Century Schoolbook', 'Century Schoolbook L', 'Utopia', 'ITC Bookman', 'Bookman', 'Nimbus Roman No9 L', 'Times New Roman', 'Times', 'Palatino', 'Charter', 'serif']
 
+import sys
+import os
 import matplotlib.pyplot as plt
 import numpy
 
@@ -102,11 +104,17 @@ def plot_util_quad_from_file(path, m_range_multiplier=2, save=False):
     plt.close(fig)
 
 plt.rcParams['figure.figsize'] = [12, 9]
-sample_size_to_scan = 1000
+if len(sys.argv) < 2:
+    print("Usage: " + sys.argv[0] + " <sample count in set to plot>")
+    exit()
+else:
+    sample_size_to_scan = int(sys.argv[1])
 
 # Plot Gaussion-Average Data
 wdir = "gaussian-average/results/"
 sdir = "gaussian-average/results/graphs/"
+if not os.path.exists(sdir):
+    os.mkdir(sdir)
 print("Scanning all gaussian-average "+str(sample_size_to_scan)+"-sample results and saving to '" + sdir + "'...")
 for core in ["4","8","16","32"]:
     for f in range(1,4):
@@ -117,6 +125,8 @@ print("Done.")
 # Plot Uniform-Normal Data
 wdir = "uniform-normal/results/"
 sdir = "uniform-normal/results/graphs/"
+if not os.path.exists(sdir):
+    os.mkdir(sdir)
 print("Scanning all uniform-normal "+str(sample_size_to_scan)+"-sample results and saving to '" + sdir + "'...")
 r = ["65","75","85"]
 for core in ["4","8","16","32"]:
