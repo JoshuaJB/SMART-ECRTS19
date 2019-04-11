@@ -9,7 +9,7 @@ if not os.path.isfile("exp_data.csv"):
 def load_data(filename="exp_data.csv"):
     dat = numpy.loadtxt(open(filename, "rb"), delimiter=",", skiprows=1)
 
-    # Threashold at 1
+    # Threshold at 1
     super_threshold_indices = dat > 1
     dat[super_threshold_indices] = 1
     return dat
