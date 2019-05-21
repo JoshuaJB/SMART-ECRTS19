@@ -1,32 +1,4 @@
 #!/bin/bash
-echo 1 > /sys/devices/system/cpu/cpu1/online
-echo 1 > /sys/devices/system/cpu/cpu2/online
-echo 1 > /sys/devices/system/cpu/cpu3/online
-echo 1 > /sys/devices/system/cpu/cpu4/online
-echo 1 > /sys/devices/system/cpu/cpu5/online
-echo 1 > /sys/devices/system/cpu/cpu6/online
-echo 1 > /sys/devices/system/cpu/cpu7/online
-echo 1 > /sys/devices/system/cpu/cpu8/online
-echo 1 > /sys/devices/system/cpu/cpu9/online
-echo 1 > /sys/devices/system/cpu/cpu10/online
-echo 1 > /sys/devices/system/cpu/cpu11/online
-echo 1 > /sys/devices/system/cpu/cpu12/online
-echo 1 > /sys/devices/system/cpu/cpu13/online
-echo 1 > /sys/devices/system/cpu/cpu14/online
-echo 1 > /sys/devices/system/cpu/cpu15/online
-echo 1 > /sys/devices/system/cpu/cpu16/online
-echo 1 > /sys/devices/system/cpu/cpu17/online
-echo 1 > /sys/devices/system/cpu/cpu18/online
-echo 1 > /sys/devices/system/cpu/cpu19/online
-echo 1 > /sys/devices/system/cpu/cpu20/online
-echo 1 > /sys/devices/system/cpu/cpu21/online
-echo 1 > /sys/devices/system/cpu/cpu22/online
-echo 1 > /sys/devices/system/cpu/cpu23/online
-echo 1 > /sys/devices/system/cpu/cpu24/online
-echo 1 > /sys/devices/system/cpu/cpu25/online
-echo 1 > /sys/devices/system/cpu/cpu26/online
-echo 1 > /sys/devices/system/cpu/cpu27/online
-echo 1 > /sys/devices/system/cpu/cpu28/online
-echo 1 > /sys/devices/system/cpu/cpu29/online
-echo 1 > /sys/devices/system/cpu/cpu30/online
-echo 1 > /sys/devices/system/cpu/cpu31/online
+offline_cpus=$(lscpu | grep "Off-line" | cut -d " " -f 4)
+echo "Enabling CPU(s): $offline_cpus"
+chcpu -e $offline_cpus

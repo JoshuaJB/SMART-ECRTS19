@@ -1,4 +1,5 @@
 #!/bin/bash
 while read t; do
-  gcc /home/shosborn/Documents/sequential/timed/$t/*.c -o /scratch/tacleSeq/$t
-done <tacleNames.txt
+  echo "Building $t"
+  gcc ./benchmarks/$t/*.c -o ./benchmarks/$t/$t
+done < tacleNames.txt
