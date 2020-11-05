@@ -1,0 +1,29 @@
+# Ignore Tacle Benchmarks
+**/adpcm_dec
+**/adpcm_enc
+**/ammunition
+**/anagram
+**/audiobeam
+**/cjpeg_transupp
+**/cjpeg_wrbmp
+**/dijkstra
+**/epic
+**/fmref
+**/g723_enc
+**/gsm_dec
+**/gsm_enc
+**/h264_dec
+**/huff_enc
+**/huff_dec
+**/mpeg2
+**/ndes
+**/petrinet
+**/rijndael_dec
+**/rijndael_enc
+**/statemate
+**/susan
+
+# Ignore misc temporary files
+**/.gdb_history
+*.swp
+**/__pycache__
